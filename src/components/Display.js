@@ -1,69 +1,68 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useRef, useEffect } from 'react';
+import {
+	Wrapper,
+	InnerWrapper,
+	Rectangle,
+	Label,
+	FlipWrapper,
+} from './Display.style';
+import gsap from 'gsap';
 
-const Wrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	font-size: 100%;
+const Display = ({ label, timeLeft }) => {
+	// const value =
+	// 	timeLeft[label] / 10 >= 1 ? timeLeft[label] : `0${timeLeft[label]}`;
+	const value = timeLeft[label];
 
-	@media (min-width: 620px) {
-		font-size: 1.2rem;
-	}
-`;
+	const wrapper = useRef(null);
+	const topRect = useRef(null);
+	const bottomRect = useRef(null);
 
-const InnerWrapper = styled.div`
-	color: hsl(346, 93%, 67%);
-	box-shadow: 0 0.3em 0em hsl(240, 16%, 12%);
-	border-radius: 0.3em;
-`;
+	const setText = (value, node, label) => {
+		if (label === 'hours' && value === 24) return (node.innerText = '00');
+		if (label !== 'day' && value === 60) return (node.innerText = '00');
+		if (value < 10) return (node.innerText = `0${value}`);
+		return (node.innerText = value);
+	};
 
-const Label = styled.span`
-	display: block;
-	width: 100%;
-	color: hsl(234, 20%, 60%);
-	font-size: 0.45rem;
-	text-align: center;
-	margin-top: 2em;
-	text-transform: uppercase;
-	letter-spacing: 0.5em;
-`;
+	useEffect(() => {
+		const element = wrapper.current;
+		const bottom = wrapper.current.children[1];
+		const top = wrapper.current.children[0];
+		const nextTop = topRect.current.children[0];
+		const prevBtm = bottomRect.current.children[0];
 
-const Rectangle = styled.div`
-	background-color: hsl(236, 21%, 26%);
-	text-align: center;
-	${({ top }) => (top ? 'filter: brightness(75%);' : null)}
-	height: 2em;
-	width: 4.2em;
-	overflow: hidden;
-	position: relative;
-	border-radius: ${({ top }) => (top ? '0.3em 0.3em 0 0' : '0 0 0.3em 0.3em')};
+		gsap.set(element, { transformStyle: 'preserve-3d' });
 
-	span {
-		font-size: 2.4rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		top: ${({ top }) => (top ? '50%' : '-50%')};
-		left: 50%;
-		transform: ${({ top }) =>
-			top ? 'translate(-50%, 0)' : ' translate(-50%, 0)'};
-	}
-`;
-
-const Display = ({ label, value }) => {
-	// console.log(label, value);
+		const tl = gsap.timeline();
+		tl.call(setText, [value, nextTop, label]);
+		tl.call(setText, [value, bottom.children[0], label]);
+		tl.call(setText, [value + 1, top.children[0], label]);
+		tl.call(setText, [value + 1, prevBtm, label]);
+		tl.set(bottom, {
+			rotationX: 180,
+			backfaceVisibility: 'hidden',
+		});
+		tl.fromTo(element, { rotationX: 0 }, { rotationX: -180, duration: 0.4 });
+		tl.call(setText, [value, top.children[0]]);
+		tl.call(setText, [value, prevBtm]);
+	}, [label, value]);
 
 	return (
 		<Wrapper>
 			<InnerWrapper>
-				<Rectangle top>
-					<span>{value}</span>
+				<Rectangle top ref={topRect}>
+					<span />
 				</Rectangle>
-				<Rectangle>
-					<span>{value}</span>
+				<FlipWrapper ref={wrapper}>
+					<Rectangle top>
+						<span />
+					</Rectangle>
+					<Rectangle>
+						<span />
+					</Rectangle>
+				</FlipWrapper>
+				<Rectangle ref={bottomRect}>
+					<span />
 				</Rectangle>
 			</InnerWrapper>
 			<Label>{label}</Label>
@@ -72,5 +71,3 @@ const Display = ({ label, value }) => {
 };
 
 export default Display;
-
-/* background-color: hsl(240, 16%, 12%); */

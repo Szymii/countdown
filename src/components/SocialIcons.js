@@ -9,6 +9,7 @@ const Wrapper = styled.div`
 	font-size: 1.5rem;
 	gap: 1em;
 	color: hsl(234, 20%, 59%);
+	padding: 1em 0 0;
 	margin: auto 0 8vh;
 
 	svg:hover {

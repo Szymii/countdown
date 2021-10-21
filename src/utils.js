@@ -1,5 +1,4 @@
-export const getTimeLeft = () => {
-	const date = new Date('2021-12-24T22:00:00');
+export const getTimeLeft = (date) => {
 	const difference = Math.floor(Math.abs(new Date() - date));
 	const time = {
 		days: 0,

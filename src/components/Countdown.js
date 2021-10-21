@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import Display from './Display';
 import { getTimeLeft } from '../utils';
+import { TimeContext } from '../TimeContext';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -9,20 +10,21 @@ const Wrapper = styled.div`
 `;
 
 const Countdown = () => {
-	const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+	const { date } = useContext(TimeContext);
+	const [timeLeft, setTimeLeft] = useState(getTimeLeft(date));
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
-			setTimeLeft(getTimeLeft());
+			setTimeLeft(getTimeLeft(date));
 		}, 1000);
 
 		return () => clearTimeout(timeout);
-	}, [timeLeft]);
+	}, [timeLeft, date]);
 
 	return (
 		<Wrapper>
 			{Object.keys(timeLeft).map((key) => (
-				<Display key={key} label={key} value={timeLeft[key]} />
+				<Display key={key} label={key} timeLeft={timeLeft} />
 			))}
 		</Wrapper>
 	);

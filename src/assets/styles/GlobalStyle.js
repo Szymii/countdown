@@ -20,6 +20,9 @@ export const GlobalStyle = createGlobalStyle`
     @media (min-width: 1024px) {
       font-size: 160%;
     }
+    @media (min-width: 1440px) {
+      font-size: 185%;
+    }
   }
 
 `;

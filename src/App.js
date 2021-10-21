@@ -4,6 +4,7 @@ import stars from './assets/images/bg-stars.svg';
 import hills from './assets/images/pattern-hills.svg';
 import Countdown from './components/Countdown';
 import SocialIcons from './components/SocialIcons';
+import { TimeProvider } from './TimeContext';
 
 const ViewWrapper = styled.div`
 	min-height: 100vh;
@@ -32,11 +33,13 @@ const StyledTitle = styled.h1`
 
 const App = () => {
 	return (
-		<ViewWrapper>
-			<StyledTitle>WE'RE LAUNCHING SOON</StyledTitle>
-			<Countdown />
-			<SocialIcons />
-		</ViewWrapper>
+		<TimeProvider>
+			<ViewWrapper>
+				<StyledTitle>WE'RE LAUNCHING SOON</StyledTitle>
+				<Countdown />
+				<SocialIcons />
+			</ViewWrapper>
+		</TimeProvider>
 	);
 };
 
