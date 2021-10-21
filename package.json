@@ -1,6 +1,6 @@
 {
 	"name": "countdown",
-	"homepage": "https://github.com/Szymii/countdown",
+	"homepage": "https://github.com/szymii/countdown",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
