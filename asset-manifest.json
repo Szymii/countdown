@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/szymii/countdown/static/js/main.400010d9.chunk.js",
-    "main.js.map": "/szymii/countdown/static/js/main.400010d9.chunk.js.map",
-    "runtime-main.js": "/szymii/countdown/static/js/runtime-main.6f06fb26.js",
-    "runtime-main.js.map": "/szymii/countdown/static/js/runtime-main.6f06fb26.js.map",
-    "static/js/2.2bad2f60.chunk.js": "/szymii/countdown/static/js/2.2bad2f60.chunk.js",
-    "static/js/2.2bad2f60.chunk.js.map": "/szymii/countdown/static/js/2.2bad2f60.chunk.js.map",
-    "index.html": "/szymii/countdown/index.html",
-    "static/js/2.2bad2f60.chunk.js.LICENSE.txt": "/szymii/countdown/static/js/2.2bad2f60.chunk.js.LICENSE.txt",
-    "static/media/bg-stars.166881a1.svg": "/szymii/countdown/static/media/bg-stars.166881a1.svg",
-    "static/media/pattern-hills.815d688f.svg": "/szymii/countdown/static/media/pattern-hills.815d688f.svg"
+    "main.js": "/countdown/static/js/main.400010d9.chunk.js",
+    "main.js.map": "/countdown/static/js/main.400010d9.chunk.js.map",
+    "runtime-main.js": "/countdown/static/js/runtime-main.82f6d602.js",
+    "runtime-main.js.map": "/countdown/static/js/runtime-main.82f6d602.js.map",
+    "static/js/2.c5ae4b77.chunk.js": "/countdown/static/js/2.c5ae4b77.chunk.js",
+    "static/js/2.c5ae4b77.chunk.js.map": "/countdown/static/js/2.c5ae4b77.chunk.js.map",
+    "index.html": "/countdown/index.html",
+    "static/js/2.c5ae4b77.chunk.js.LICENSE.txt": "/countdown/static/js/2.c5ae4b77.chunk.js.LICENSE.txt",
+    "static/media/bg-stars.166881a1.svg": "/countdown/static/media/bg-stars.166881a1.svg",
+    "static/media/pattern-hills.815d688f.svg": "/countdown/static/media/pattern-hills.815d688f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6f06fb26.js",
-    "static/js/2.2bad2f60.chunk.js",
+    "static/js/runtime-main.82f6d602.js",
+    "static/js/2.c5ae4b77.chunk.js",
     "static/js/main.400010d9.chunk.js"
   ]
 }
